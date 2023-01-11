@@ -11,8 +11,8 @@ window.Todo = {
       url: this.url,
       type: 'POST',
       dataType: 'json',
-      data: {todoText: text},
-      success: callback
+      data: {todoText: text}, // text
+      success: callback // addtoDo
     });
   },
 

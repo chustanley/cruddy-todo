@@ -27,7 +27,7 @@ describe('getNextUniqueId', () => {
   beforeEach(cleanTestDatastore);
 
   it('should use error first callback pattern', (done) => {
-    counter.getNextUniqueId((err, id) => {
+    counter.getNextUniqueId((err, id) => { // null, id: 1
       expect(err).to.be.null;
       expect(id).to.exist;
       done();
@@ -43,7 +43,7 @@ describe('getNextUniqueId', () => {
   });
 
   it('should give the next id based on the count in the file', (done) => {
-    fs.writeFileSync(counter.counterFile, '00025');
+    fs.writeFileSync(counter.counterFile, '00025'); // writing 000025 in there
     counter.getNextUniqueId((err, id) => {
       expect(id).to.equal('00026');
       done();
