@@ -39,14 +39,6 @@ const writeCounter = (count, callback) => {
 // Public API - Fix this function //////////////////////////////////////////////
 
 exports.getNextUniqueId = (callBack) => { // Middleware?
-  // counter = counter + 1;
-  // return zeroPaddedNumber(counter);
-  // if (err) {
-  //   console.log('uhhhh this doesnt work');
-  //   return null;
-  // } else {
-  //   return data;
-  // }
 
   readCounter((err, data) => {
     if (err) {
