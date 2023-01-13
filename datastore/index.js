@@ -35,10 +35,34 @@ exports.create = (text, callback) => {
 };
 
 exports.readAll = (callback) => {
-  var data = _.map(items, (text, id) => {
-    return { id, text };
+  // var data = _.map(items, (text, id) => {
+  //   return { id, text };
+  // });
+  // callback(null, data);
+
+  //[ '00001.txt', '00002.txt' ]
+
+  fs.readdir(exports.dataDir, (err, data) => {
+
+    if (err) {
+      callback(err, []);
+    } else {
+      var todosArray = _.map(data, (text) => { //00001.txt
+
+        var splitString = text.split('.');
+
+        var resultObject = {
+          'id': splitString[0],
+          'text': splitString[0]
+        };
+
+        return resultObject;
+
+      });
+      console.log(todosArray);
+      callback(null, todosArray);
+    }
   });
-  callback(null, data);
 };
 
 exports.readOne = (id, callback) => {
